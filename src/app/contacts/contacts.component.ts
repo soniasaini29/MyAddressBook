@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Contact } from '../contacts.model';
 import { map, tap, take, exhaustMap } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {DataStorageService} from '../contacts.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-contacts',
@@ -12,15 +13,23 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
+  
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
   contacts: any;
   contactsData: any;
-
+  
   constructor(private http: HttpClient,
     private dataStorage: DataStorageService,
     private route: ActivatedRoute,
 		private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.dtOptions = {
+			pagingType: 'full_numbers',
+			processing: true,
+			order: []
+		};
     this.http.get('https://myfirebaseproject-5195b.firebaseio.com/createcontact.json')
     .pipe(map(contactsData => {
       const postArr = [];
@@ -36,6 +45,7 @@ export class ContactsComponent implements OnInit {
     .subscribe(response => {
       console.log(response);
       this.contactsData = response;
+      this.dtTrigger.next();
     });
   }
   onEditContact(contact){

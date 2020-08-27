@@ -10,6 +10,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { CreateContactComponent } from './create-contact/create-contact.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    DataTablesModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyApXcxux2JyeUXWiJOeAOnM-1bS-XmebRc",
       authDomain: "myfirebaseproject-5195b.firebaseapp.com",
