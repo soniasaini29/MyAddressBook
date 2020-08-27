@@ -1,0 +1,26 @@
+nav span.header-title{
+    color: #f95959;
+    align-items: left;
+    position: absolute;
+    left: 3.5rem;
+    font-weight: 700;
+}
+
+nav a.active
+{
+    font-weight: 700;
+    border-bottom: .20rem solid #000;
+}
+
+nav a:hover
+{
+    font-weight: 700;
+    border-bottom: .20rem solid #796e6e;
+}
+
+nav a:hover{
+    text-decoration: none;;
+}
+nav a{
+    margin-right: 5px;
+}

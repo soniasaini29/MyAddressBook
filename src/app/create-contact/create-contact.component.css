@@ -1,0 +1,18 @@
+.btn-position {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1rem;
+  }
+
+  input.ng-invalid.ng-touched
+ {
+  border: 1px solid red;
+}
+
+input.errorDisplay
+ {
+  border: 1px solid red;
+}
+.errorMsg{
+  color:red;
+}
